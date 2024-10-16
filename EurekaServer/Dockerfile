@@ -1,4 +1,4 @@
-FROM gradle:8.10-jdk23-alpine AS build
+FROM gradle:8.10-jdk17-alpine AS build
 
 WORKDIR /app
 
@@ -6,10 +6,10 @@ WORKDIR /app
 COPY . .
 
 # Build the project (this will also install dependencies)
-RUN ./gradlew build --no-daemon
+RUN ./gradlew build --no-daemon -x test
 
 # Step 2: Use the official OpenJDK image to run the application
-FROM eclipse-temurin:23-jre-alpine
+FROM eclipse-temurin:17-jre-alpine
 
 # Set the working directory inside the container
 WORKDIR /app

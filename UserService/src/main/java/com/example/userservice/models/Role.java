@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class Role {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    public long id;
+    public Integer id;
     @Column(unique = true)
     public String name;
     @Column(nullable = true)
